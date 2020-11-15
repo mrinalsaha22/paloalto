@@ -1,5 +1,5 @@
 - name: Create a Paloalto Firewall Tunnel
-  hosts: ALL
+  hosts: all
   connection: local
   gather_facts: False
     
