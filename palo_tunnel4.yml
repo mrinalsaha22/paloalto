@@ -2,7 +2,8 @@
   hosts: ALL
   connection: local
   gather_facts: False
-
+    
+    
   collections:
    - paloaltonetworks.panos 
      
@@ -16,7 +17,9 @@
 
   - name: Configure Tunnel Interface
     panos_tunnel:
-      provider: '{{provider}}'
+      provider: 
+      ip_address: '{{ inventory_hostname }}'
+      api_key: LUFRPT1Cb0sxaEtqREdIZktueHhoN0FzamgwQ3dRcEU9MkEzM3lDRzVYWkFmSW5Jd0JIdzFuUXpiaFViQ1FuWHZHbit2ZURFN3B1SWsxZDBKaTh4QkhQVlhqSEpCM2JHbA==
       state: 'present'
       if_name: '{{ item.if_name }}'
       #ip: ['{{ 10.1.1.1/32 }}']
