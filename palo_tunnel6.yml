@@ -22,7 +22,7 @@
         ip_address: "{{ server }}"
       state: 'present'
       if_name: '{{ item.if_name }}'
-      #ip: ['{{ 10.1.1.1/32 }}']
+      ip: '{{ item.ip }}'
       comment: '{{ item.comment }}'
       zone_name: 'vpn'
       vr_name: 'VR1'
