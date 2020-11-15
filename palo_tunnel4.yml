@@ -18,8 +18,8 @@
   - name: Configure Tunnel Interface
     panos_tunnel:
       provider: 
-      ip_address: '{{ inventory_hostname }}'
-      api_key: LUFRPT1Cb0sxaEtqREdIZktueHhoN0FzamgwQ3dRcEU9MkEzM3lDRzVYWkFmSW5Jd0JIdzFuUXpiaFViQ1FuWHZHbit2ZURFN3B1SWsxZDBKaTh4QkhQVlhqSEpCM2JHbA==
+        ip_address: '{{ inventory_hostname }}'
+        api_key: LUFRPT1Cb0sxaEtqREdIZktueHhoN0FzamgwQ3dRcEU9MkEzM3lDRzVYWkFmSW5Jd0JIdzFuUXpiaFViQ1FuWHZHbit2ZURFN3B1SWsxZDBKaTh4QkhQVlhqSEpCM2JHbA==
       state: 'present'
       if_name: '{{ item.if_name }}'
       #ip: ['{{ 10.1.1.1/32 }}']
@@ -31,7 +31,9 @@
 
   - name: Create a Static Route towards tunnel
     panos_static_route:
-      provider: '{{ provider }}'
+      provider: 
+       ip_address: '{{ inventory_hostname }}'
+       api_key: LUFRPT1Cb0sxaEtqREdIZktueHhoN0FzamgwQ3dRcEU9MkEzM3lDRzVYWkFmSW5Jd0JIdzFuUXpiaFViQ1FuWHZHbit2ZURFN3B1SWsxZDBKaTh4QkhQVlhqSEpCM2JHbA==
       state: 'present'
       name: '{{ item.name }}'  # Update the Name
       destination: '{{ item.destination }}' # Update the destination IP address
@@ -42,7 +44,9 @@
 
   - name: Add IKE Crypto profile
     panos_ike_crypto_profile:
-      provider: '{{provider}}'
+      provider:
+        ip_address: '{{ inventory_hostname }}'
+        api_key: LUFRPT1Cb0sxaEtqREdIZktueHhoN0FzamgwQ3dRcEU9MkEzM3lDRzVYWkFmSW5Jd0JIdzFuUXpiaFViQ1FuWHZHbit2ZURFN3B1SWsxZDBKaTh4QkhQVlhqSEpCM2JHbA==
       state: 'present'
       name: '{{ item.name }}'  ## Update with the name
       dh_group: ['{{ item.dh_group }}']
@@ -54,7 +58,9 @@
 
   - name: Add IKE Gateway
     panos_ike_gateway:
-      provider: '{{provider}}'
+      provider:
+        ip_address: '{{ inventory_hostname }}'
+        api_key: LUFRPT1Cb0sxaEtqREdIZktueHhoN0FzamgwQ3dRcEU9MkEzM3lDRzVYWkFmSW5Jd0JIdzFuUXpiaFViQ1FuWHZHbit2ZURFN3B1SWsxZDBKaTh4QkhQVlhqSEpCM2JHbA==
       state: 'present'
       name: '{{ item.name }}'  ## Update with the name
       version: 'ikev1'  ## Update if that is required
@@ -79,7 +85,9 @@
 
   - name: Add the IPSEC Crypto
     panos_ipsec_profile:
-      provider: '{{ provider }}'
+      provider: 
+        ip_address: '{{ inventory_hostname }}'
+        api_key: LUFRPT1Cb0sxaEtqREdIZktueHhoN0FzamgwQ3dRcEU9MkEzM3lDRzVYWkFmSW5Jd0JIdzFuUXpiaFViQ1FuWHZHbit2ZURFN3B1SWsxZDBKaTh4QkhQVlhqSEpCM2JHbA==
       state: 'present'
       name: '{{ item.name }}'
       esp_authentication: ['{{ item.esp_authentication }}']
@@ -92,7 +100,9 @@
 
   - name: Add IPSec tunnel to IKE gateway profile
     panos_ipsec_tunnel:
-      provider: '{{ provider }}'
+      provider: 
+        ip_address: '{{ inventory_hostname }}'
+        api_key: LUFRPT1Cb0sxaEtqREdIZktueHhoN0FzamgwQ3dRcEU9MkEzM3lDRzVYWkFmSW5Jd0JIdzFuUXpiaFViQ1FuWHZHbit2ZURFN3B1SWsxZDBKaTh4QkhQVlhqSEpCM2JHbA==
       name: '{{ item.name }}'
       tunnel_interface: '{{ item.tunnel_interface }}'
       ak_ike_gateway: '{{ item.ak_ike_gateway }}'
@@ -104,7 +114,9 @@
 
   - name: Add IPSec IPv4 Proxy ID
     panos_ipsec_ipv4_proxyid:
-      provider: '{{ provider }}'
+      provider: 
+        ip_address: '{{ inventory_hostname }}'
+        api_key: LUFRPT1Cb0sxaEtqREdIZktueHhoN0FzamgwQ3dRcEU9MkEzM3lDRzVYWkFmSW5Jd0JIdzFuUXpiaFViQ1FuWHZHbit2ZURFN3B1SWsxZDBKaTh4QkhQVlhqSEpCM2JHbA==
       name: '{{ item.name }}'
       tunnel_name: '{{ item.tunnel_name }}'
       local: '{{ item.local }}'
